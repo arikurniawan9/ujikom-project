@@ -5,7 +5,13 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@theme {
+  --color: {
+    ocean-blue-light: #1e40af;
+    ocean-blue-light-alt: #3b82f6;
+    ocean-blue-dark: #0f172a;
+    ocean-blue-dark-alt: #1e293b;
+  };
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -22,5 +28,52 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Card shadow utility */
+.card {
+  @apply bg-white dark:bg-[#1e293b] rounded-xl shadow-lg dark:shadow-xl transition-all duration-300 hover:shadow-xl dark:hover:shadow-2xl;
+}
+
+/* Gradient button */
+.btn-gradient {
+  @apply bg-gradient-to-r from-[#1e40af] to-[#3b82f6] hover:from-[#3b82f6] hover:to-[#1e40af] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02];
+}
+
+/* Dark mode gradient button */
+.btn-gradient-dark {
+  @apply bg-gradient-to-r from-[#0f172a] to-[#1e293b] hover:from-[#1e293b] hover:to-[#0f172a] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02];
 }
